@@ -7,7 +7,6 @@ import pefile
 import random
 
 version = 'Version 0.1'
-finalFile = 'crypted.exe'
 
 def cryptStringTable(file):
 	strings = list()
@@ -56,6 +55,7 @@ def cryptStringTable(file):
 
 def main(argv):
 	useStringTable = False
+
 	try:
 		opts, args = getopt.getopt(argv, "hVi:o:t", ['help', 'version', 'infile', 'outfile', 'string-table'])
 	except getopt.GetoptError:
@@ -82,6 +82,9 @@ def main(argv):
 			finalPath = arg
 			#strip filename from path
 			finalFile = os.path.basename(finalPath)
+		else:
+				finalFile = 'crypted.exe'
+				finalPath = finalFile
 		if opt in ('-t', '--string-table'):
 			useStringTable = True
 
